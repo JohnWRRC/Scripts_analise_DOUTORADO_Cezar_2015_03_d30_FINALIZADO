@@ -1,0 +1,10 @@
+cd "C:\Users\User\Documents\Projetos_2014\Cezar\Dados_Cezar"
+v.in.ogr dsn=AE_belem_flor.shp out=AE_belem_flor_shp
+v.in.ogr dsn=mask_teste.shp out=mask_teste_shp
+v.to.rast in=mask_teste_shp out=mask_teste_shp_rast use=attr column=id
+
+
+g.region vect=AE_belem_flor_shp res=30
+
+v.to.rast in=AE_belem_flor_shp out=AE_belem_flor_shp_rast_bin use=attr column=GRIDCODE
+r.mapcalc "AE_belem_flor_shp_rast_bin_float=if(isnull(AE_belem_flor_shp_rast_bin),0,1)"

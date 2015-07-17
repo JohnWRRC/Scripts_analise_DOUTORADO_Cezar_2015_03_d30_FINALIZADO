@@ -1,0 +1,9 @@
+cd "C:\Users\User\Documents\Projetos_2014\Cezar\Dados_Cezar\BANCO_GRASS_Arruma_mapa"
+
+v.in.ogr dsn=hex_5000.shp out=hex_5000_shp
+
+g.region vect=mapa_belem_shp res=30
+
+v.to.rast in=mapa_belem_shp out=mapa_belem_rast  col=GRIDCODE --o
+
+r.out.gdal in=mapa_belem_rast   out=mapa_belem_rast.tif 
